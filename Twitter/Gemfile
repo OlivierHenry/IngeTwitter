@@ -18,6 +18,9 @@ end
 
 gem 'jquery-rails'
 
+group :development do
+	gem 'rspec-rails', '2.5.0'
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -33,4 +36,6 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', '~> 0.8.3', :require => false
+  gem 'rspec', '2.5.0'
+  gem 'webrat', '0.7.1'
 end
