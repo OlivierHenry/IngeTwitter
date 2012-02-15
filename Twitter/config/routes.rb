@@ -3,9 +3,9 @@ Twitter::Application.routes.draw do
   resources :microposts
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
-  #get "sessions/new"
+  get "sessions/new"
 
-  #get "users/new"
+  get "users/new"
 
   match '/contact', :to => 'pages#contact'
   match '/about', 	:to => 'pages#about'
@@ -14,9 +14,9 @@ Twitter::Application.routes.draw do
   match '/signup',	:to => 'users#new'
   match '/signin',	:to => 'sessions#new'
   match '/signout',	:to => 'sessions#destroy'
-  #get "pages/home"
+  get "pages/home"
 
-  #get "pages/contact"
+  get "pages/contact"
 
   
 
