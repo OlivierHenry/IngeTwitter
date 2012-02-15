@@ -5,7 +5,13 @@
 				<ul>
 					<li><%= link_to "Accueil", "root_path"%></li>
 					<li><%= link_to "Aide", "help_path"%></li>
-					<li><%= link_to "Inscription", "#"%></li>
+					<% if signed_in? %>
+						<li><%= link_to "Profil", current_user %></li>
+						<li><%= link_to "Deconnexion", signout_path, :method => :delete %></li>
+					<% else %>
+						<li><%= link_to "Inscription", "#"%></li>
+						<li><%= link_to "S'identifier", signin_path %></li>
+					<% end %>
 				</ul>
 			</nav>
 		</header>

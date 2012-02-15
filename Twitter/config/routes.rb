@@ -1,19 +1,24 @@
 Twitter::Application.routes.draw do
 
-  get "users/new"
+  resources :microposts
+  resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
+  #get "sessions/new"
+
+  #get "users/new"
 
   match '/contact', :to => 'pages#contact'
   match '/about', 	:to => 'pages#about'
   match '/help',	:to => 'pages#help'
   match '/',		:to => 'pages#home'
   match '/signup',	:to => 'users#new'
-  get "pages/home"
+  match '/signin',	:to => 'sessions#new'
+  match '/signout',	:to => 'sessions#destroy'
+  #get "pages/home"
 
-  get "pages/contact"
+  #get "pages/contact"
 
-  resources :microposts
-
-  resources :users
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
