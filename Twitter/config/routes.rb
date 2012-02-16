@@ -1,6 +1,6 @@
 Twitter::Application.routes.draw do
 
-  resources :microposts
+  resources :microposts, :only => [:create, :destroy]
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   get "sessions/new"

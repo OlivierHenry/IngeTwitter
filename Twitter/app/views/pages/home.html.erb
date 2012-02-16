@@ -1,4 +1,22 @@
-<h1>Twitter</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+﻿<% if signed_in? %>
+  <table class="front" summary="Pour visiteur identifie">
+    <tr>
+      <td class="main">
+        <h1 class="micropost">Quoi de neuf ?</h1>
+        <%= render 'shared/micropost_form' %>
+		<%= render 'shared/feed' %>
+      </td>
+      <td class="sidebar round">
+        <%= render 'shared/user_info' %>
+      </td>
+    </tr>
+  </table>
+<% else %>
+  <h1>Twitter Like</h1>
 
-<%= link_to "S'inscrire !", signup_path, :class => "signup_button round" %>
+  <p>
+    
+  </p>
+
+  <%= link_to "S'inscrire !", signup_path, :class => "signup_button round" %>
+<% end %>

@@ -5,6 +5,12 @@
         <%= gravatar_for @user %>
         <%= @user.nom %>
       </h1>
+	  <% unless @user.microposts.empty? %>
+	  <table class="microposts" summary="Micro-messages de l'utilisateur">
+		<%= render @microposts %>
+	  </table>
+	  <%= will_paginate @microposts %>
+	  <% end %>
     </td>
     <td class="sidebar round">
       <strong>Nom</strong> <%= @user.nom %><br />
@@ -14,5 +20,3 @@
 </table>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
