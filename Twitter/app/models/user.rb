@@ -49,8 +49,12 @@ class User < ActiveRecord::Base
 		relationschips.find_by_followed_id(followed).destroy
 	end
 
+	#def feed
+	#	Micropost.where("user_id = ?", id)
+	#end
+	
 	def feed
-		Micropost.where("user_id = ?", id)
+		Micropost.from_users_followed_by(self)
 	end
 	
 	

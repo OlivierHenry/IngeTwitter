@@ -2,13 +2,15 @@ Twitter::Application.routes.draw do
 
   get "pages/home"
   resources :microposts, :only => [:create, :destroy]
-  resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
+  resources :relationships, :only => [:create, :destroy]
+  #resources :users
   resources :users do
 	member do
 		get :following, :followers
 	end
   end
-  resources :sessions, :only => [:new, :create, :destroy]
+  
   get "sessions/new"
 
   get "users/new"

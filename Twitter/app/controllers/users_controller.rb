@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	before_filter :authenticate, :except => [:show, :new, :create]
 	before_filter :authenticate, :only => [:index, :edit, :update]
 	before_filter :correct_user, :only => [:edit, :update]
 	
@@ -48,6 +49,20 @@ class UsersController < ApplicationController
   
   def edit
 	@title = "Edition du profil"
+  end
+  
+  def following
+	@title = "Following"
+	@user = User.find(params[:id])
+	@users = @user.following.paginate(:page => params[:page])
+	render 'show_follow'
+  end
+  
+  def followers
+	@title = "Followers"
+	@user = User.find(params[:id])
+	@users = @user.followers.paginate(:page => params[:page])
+	render 'show_follow'
   end
   
   private
